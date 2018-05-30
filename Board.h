@@ -12,7 +12,7 @@ class Board {
 private:
 	Status** board;
 	int sizeOfBoard;
-	bool Board::exists(const std::string& name);
+	bool exists(const std::string& name);
 
 public:
 	Board();
@@ -26,7 +26,7 @@ public:
 	friend istream& operator>> (istream& is, Board& newBorad);
 	unsigned int size() const;
 	int BoardSize() const;
-	string Board::draw(int pixels);
+	string draw(int pixels);
 };
 
 struct RedGreenBlue {
