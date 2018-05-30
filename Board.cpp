@@ -102,7 +102,6 @@ int Board::BoardSize() const {
 
 
 string Board::draw(int pixels) {
-	cout << "start";
 		string fileName = "myimage.ppm";
 		int i = 1;
 		while (exists(fileName)) {
@@ -212,7 +211,6 @@ string Board::draw(int pixels) {
 		/*
 		*image processing
 		*/
-		cout << "end";
 		output.write(reinterpret_cast <char*>(&image), 3 * pixels*pixels);
 		output.close();
 		return fileName;
