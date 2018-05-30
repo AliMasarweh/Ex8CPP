@@ -219,6 +219,6 @@ string Board::draw(int pixels) {
 	}
 
 bool Board::exists(const std::string& name) {
-	struct stat buffer;
-	return (stat(name.c_str(), &buffer) == 0);
+	ifstream f(name.c_str());
+    	return f.good();
 }
