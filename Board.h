@@ -3,10 +3,12 @@
 #define BOARD_HPP_
 
 #include <math.h>
+#include <vector>
+#include <fstream>
+#include <string>
 #include "Status.h"
 #include "Coordination.h"
 #include "IllegalCoordinateException.cpp"
-
 
 class Board {
 private:
