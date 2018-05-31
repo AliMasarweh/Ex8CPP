@@ -100,6 +100,8 @@ int Board::BoardSize() const {
 
 
 string Board::draw(int pixels) {
+	if(sizeOfBoard == 3)
+		cout<< "error1" <<endl;
 	Board board{ sizeOfBoard };
 	board = *this;
 	//string fileName ="TicTacToe.ppm";
@@ -124,6 +126,8 @@ string Board::draw(int pixels) {
 	/*
 	* creat lines
 	*/
+	if(sizeOfBoard == 3)
+		cout<< "error2" <<endl;
 	for (int i = 0; i<sizeOfBoard; i++) {//create rows
 		int wid = i*(length / sizeOfBoard);
 		for (int j = 0; j<length; j++) {
@@ -148,6 +152,8 @@ string Board::draw(int pixels) {
 			image[(length*j) + len].blue = 255;
 		}
 	}
+	if(sizeOfBoard == 3)
+		cout<< "error3" <<endl;
 	for (int i = 0; i<sizeOfBoard; ++i) {//O and X signs
 		for (int j = 0; j<sizeOfBoard; j++) {
 			int len, to_len, wid, to_wid;
@@ -201,6 +207,8 @@ string Board::draw(int pixels) {
 			}
 		}
 	}
+	if(sizeOfBoard == 3)
+		cout<< "error4" <<endl;
 
 	/*
 	*image processing
