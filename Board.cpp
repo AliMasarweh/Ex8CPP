@@ -110,14 +110,14 @@ string Board::draw(int pixels) {
 
 	RedGreenBlue *image = new RedGreenBlue[height*width];
 
-	for (int j = 0; j<height; j++) {  // row
-		for (int i = 0; i<height; i++) { // column
+	for (int i = 0; i<height; i++) {  // row
+		for (int j = 0; j<height; j++) { // column
 										 /*
 										 *giving all three the number 255 gives us a white board pic
 										 */
-			image[(height*j) + i].red = 255;
-			image[(height*j) + i].green = 255;
-			image[(height*j) + i].blue = 255;
+			image[(width*i) + j].red = 255;
+			image[(width*i) + j].green = 255;
+			image[(width*i) + j].blue = 255;
 		}
 	}
 
