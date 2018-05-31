@@ -108,7 +108,7 @@ string Board::draw(int pixels) {
 	ofstream output(fileName, ios::app | ios::binary);
 	output << "P6" << endl << length << " " << width << endl << 255 << endl;
 
-	RedGreenBlue image[length*length];
+	RedGreenBlue *image = new RedGreenBlue[length*length];
 
 	for (int j = 0; j<length; j++) {  // row
 		for (int i = 0; i<length; i++) { // column
