@@ -1,6 +1,5 @@
 #include "Board.h"
-#include <vector>
-#include <fstream>
+
 
 Board::Board() {
 	this->sizeOfBoard = 4;
