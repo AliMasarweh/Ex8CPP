@@ -206,8 +206,10 @@ string Board::draw(int pixels) {
 	*/
 	output.write(reinterpret_cast <char*>(&image), 3 * pixels*pixels);
 	output.close();
-	if(sizeOfBoard == 3)
-		return "TicTacToe_9.ppm";
+	if(sizeOfBoard == 3 && fileName == "TicTacToe_3.ppm" )
+		return "TicTacToe_3.ppm";
+	else
+		return "error";
 	return fileName;
 }
 
