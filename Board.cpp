@@ -11,7 +11,7 @@ Board::Board() {
 		this->board[i] = new Status[this->sizeOfBoard];
 }
 
-Board::Board(int size) {
+Board::Board(const int size) {
 	this->sizeOfBoard = size;
 	this->board = new Status*[this->sizeOfBoard];
 	int i;
