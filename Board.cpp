@@ -201,18 +201,13 @@ string Board::draw(int pixels) {
 			}
 		}
 	}
-	if(sizeOfBoard == 3)
-		cout<< "error1" <<endl;
-
 	/*
 	*image processing
 	*/
 	output.write(reinterpret_cast <char*>(&image), 3 * pixels*pixels);
-	if(sizeOfBoard == 3)
-		cout<< "error2" <<endl;
 	output.close();
 	if(sizeOfBoard == 3)
-		cout<< "error3" <<endl;
+		return "TicTacToe_3.ppm";
 	return fileName;
 }
 
