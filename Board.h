@@ -2,7 +2,7 @@
 #ifndef BOARD_HPP_
 #define BOARD_HPP_
 
-
+#include <math.h>
 #include "Status.h"
 #include "Coordination.h"
 #include "IllegalCoordinateException.cpp"
