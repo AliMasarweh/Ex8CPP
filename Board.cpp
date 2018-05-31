@@ -130,7 +130,7 @@ string Board::draw(int pixels) {
 /*
 * creat lines
 */
-	for(int i=0;i<size;i++){//create rows
+	for(int i=0;i<sizeOfBoard;i++){//create rows
 	    int wid=i*(length/sizeOfBoard);
             for(int j=0;j<length;j++){
 /*
@@ -154,12 +154,12 @@ string Board::draw(int pixels) {
 		    image[(length*j)+len].blue =255;
 		}
 	}
-	for(int i=0;i<size;++i){//O and X signs
+	for(int i=0;i<sizeOfBoard;++i){//O and X signs
 		for(int j=0;j<sizeOfBoard;j++){
                     int len, to_len, wid, to_wid;
-	            len =j*(length/size);
+	            len =j*(length/sizeOfBoard);
 		    to_len =(j+1)*(length/sizeOfBoard);
-		    wid =i*(length/size);
+		    wid =i*(length/sizeOfBoard);
 		    to_wid =(i+1)*(length/sizeOfBoard);
             
             if(board[{i,j}] =='O'){//draw O
@@ -211,7 +211,7 @@ string Board::draw(int pixels) {
 /*
 *image processing
 */
-	output.write (reinterpret_cast <char*>(& image),3 * num*num);
+	output.write (reinterpret_cast <char*>(& image),3 * pixels*pixels);
 	output.close ();
 	return fileName;
 }
