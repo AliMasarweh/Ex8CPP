@@ -121,8 +121,8 @@ string Board::draw(int pixels) {
 											 /*
 											 *giving all three the number 255 gives us a white board pic
 											 */
-				RedGreenBlue x{ 255,255,255 };
-				image->push_back(x);
+				RedGreenBlue *x = new RedGreenBlue( 255,255,255 );
+				image->push_back(*x);
 			}
 		}
 
