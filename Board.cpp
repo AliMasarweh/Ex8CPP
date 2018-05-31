@@ -131,7 +131,7 @@ string Board::draw(int pixels) {
 * creat lines
 */
 	for(int i=0;i<size;i++){//create rows
-	    int wid=i*(length/size);
+	    int wid=i*(length/sizeOfBoard);
             for(int j=0;j<length;j++){
 /*
 *giving only the blue one 255 and others 
@@ -142,8 +142,8 @@ string Board::draw(int pixels) {
                 image[(wid*length)+j].blue =255;
 		}
 	}
-	for(int i=0;i<size;i++){//create col
-		int len =i*(length/size);
+	for(int i=0;i<sizeOfBoard;i++){//create col
+		int len =i*(length/sizeOfBoard);
 		for(int j=0;j<length;j++){
 /*
 *giving only the blue one 255 and others 
@@ -155,12 +155,12 @@ string Board::draw(int pixels) {
 		}
 	}
 	for(int i=0;i<size;++i){//O and X signs
-		for(int j=0;j<size;j++){
+		for(int j=0;j<sizeOfBoard;j++){
                     int len, to_len, wid, to_wid;
 	            len =j*(length/size);
-		    to_len =(j+1)*(length/size);
+		    to_len =(j+1)*(length/sizeOfBoard);
 		    wid =i*(length/size);
-		    to_wid =(i+1)*(length/size);
+		    to_wid =(i+1)*(length/sizeOfBoard);
             
             if(board[{i,j}] =='O'){//draw O
 	           int len_dist =(to_len-len)/2;
