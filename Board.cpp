@@ -104,7 +104,7 @@ string Board::draw(int pixels) {
 	board = *this;
 	//string fileName ="TicTacToe.ppm";
 	int length = pixels, width = pixels;
-	string fileName = "TicTacToe_" + to_string(sizeOfBoard) + ".ppm";// this way we can make all type of dif board with dif image names
+	string fileName = "TicTacToe_" + to_string(this->sizeOfBoard) + ".ppm";// this way we can make all type of dif board with dif image names
 	ofstream output(fileName, ios::app | ios::binary);
 	output << "P6" << endl << length << " " << width << endl << 255 << endl;
 
