@@ -16,7 +16,7 @@ private:
 
 public:
 	Board();
-	Board(const int size);
+	Board(int size);
 	Board(const Board& newBorad);
 	~Board();
 	Board& operator=(const Board& newBorad);
