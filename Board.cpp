@@ -83,7 +83,7 @@ istream& operator>> (istream &is, Board &board) {
 	int i;
 	for (i = 0; i<size; i++) temp[{0, i}] = line[i];
 	int num = 1;
-	while (num < size && is >> line) {
+	while (is >> line) {
 		i = 0;
 		for (i = 0; i<size; i++) temp[{num, i}] = line[i];
 		num++;
