@@ -101,8 +101,8 @@ int Board::BoardSize() const {
 }
 
 
-string Board::draw(int pixels) {
-		 Board board{size};
+  string Board::draw(int num){
+     Board board{size};
      board=*this;
 	//string fileName ="TicTacToe.ppm";
 	int length = num, width = num;
