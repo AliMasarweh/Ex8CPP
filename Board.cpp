@@ -125,7 +125,7 @@ string Board::draw(int pixels) {
 				image->push_back(*x);
 			}
 		}
-
+		image->size();
 		/*
 		* creat lines
 		*/
