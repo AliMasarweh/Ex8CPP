@@ -18,6 +18,8 @@ Board::Board(int size) {
 		this->board[i] = new Status[this->sizeOfBoard];
 }
 
+
+
 Board::Board(const Board& newBoard) {
 	this->sizeOfBoard = newBoard.sizeOfBoard;
 	this->board = new Status*[this->sizeOfBoard];
