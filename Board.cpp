@@ -102,20 +102,15 @@ int Board::BoardSize() const {
 
 
 string Board::draw(int pixels) {
-		string fileName = "myimage.ppm";
-		int i = 1;
-		while (exists(fileName)) {
-			fileName = "myimage" + std::to_string(i) + ".ppm";
-			i++;
-		}
-		Board board{ this->sizeOfBoard };
-		board = *this;
-		int length = pixels, width = pixels;
-		ofstream output(fileName, ios::app | ios::binary);
-		output << "P6" << endl << length << " " << width << endl << 255 << endl;
-		//vector<RedGreenBlue> *image;
-		//image = new vector<RedGreenBlue>();
-		RedGreenBlue image[length*length];
+		 Board board{size};
+     board=*this;
+	//string fileName ="TicTacToe.ppm";
+	int length = num, width = num;
+	string fileName = "TicTacToe_"+to_string(size)+".ppm";// this way we can make all type of dif board with dif image names
+	ofstream output(fileName, ios::app |ios::binary );
+	output << "P6" << endl << length <<" " << width << endl << 255 << endl;
+
+	RedGreenBlue image[length*length];
         
     for(int j=0; j<length;j++){  // row
        for(int i=0; i<length;i++){ // column
@@ -209,14 +204,13 @@ string Board::draw(int pixels) {
 		}
 	    }
 
-		/*
-		*image processing
-		*/
-		output.write(reinterpret_cast <char*>(&image), 3 * pixels*pixels);
-		output.close();
-		return fileName;
-	}
-
+/*
+*image processing
+*/
+	output.write (reinterpret_cast <char*>(& image),3 * num*num);
+	output.close ();
+	return fileName;
+}
 bool Board::exists(const std::string& name) {
 	ifstream f(name.c_str());
     	return f.good();
