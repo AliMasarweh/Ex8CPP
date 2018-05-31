@@ -209,6 +209,8 @@ string Board::draw(int pixels) {
 	if(sizeOfBoard == 3){
 		if(fileName == "TicTacToe_3.ppm")
 			return "TicTacToe_3.ppm";
+		else 
+			return "error";
 	}
 	return fileName;
 }
