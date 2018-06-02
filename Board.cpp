@@ -99,10 +99,10 @@ int Board::BoardSize() const {
 }
 
 
-string Board::draw(int pixels) {
+string Board::draw(int num) {
 	Board board{ sizeOfBoard };
 	board = *this;
-	int width = pixels, height = pixels;
+	int length = num, width = num;
 	string fileName = "TicTacToe.ppm";
 	int i = 0;
 	while (exists(fileName)) {
@@ -110,18 +110,18 @@ string Board::draw(int pixels) {
 		i++;
 	}// this way we can make all type of different image names
 	ofstream output(fileName, ios::app | ios::binary);
-	output << "P6" << endl << width << " " << height << endl << 255 << endl;
+	output << "P6" << endl << length << " " << width << endl << 255 << endl;
 
-	RedGreenBlue *image = new RedGreenBlue[width*height];
+	RedGreenBlue *image = new RedGreenBlue[length*length];
 
-	for (int i = 0; i<width; i++) {  // row
-		for (int j = 0; j<height; j++) { // column
+	for (int j = 0; j<length; j++) {  // row
+		for (int i = 0; i<length; i++) { // column
 										 /*
 										 *giving all three the number 255 gives us a white board pic
 										 */
-			image[(width*i) + j].red = 255;
-			image[(width*i) + j].green = 255;
-			image[(width*i) + j].blue = 255;
+			image[(length*j) + i].red = 255;
+			image[(length*j) + i].green = 255;
+			image[(length*j) + i].blue = 255;
 		}
 	}
 
@@ -129,39 +129,39 @@ string Board::draw(int pixels) {
 	* creat lines
 	*/
 	for (int i = 0; i<sizeOfBoard; i++) {//create rows
-		int wid = i*(width / sizeOfBoard);
-		for (int j = 0; j<height; j++) {
+		int wid = i*(length / sizeOfBoard);
+		for (int j = 0; j<length; j++) {
 			/*
 			*giving only the blue one 255 and others
 			* give them zero makes our TicTacToe board rows a blue rows
 			*/
-			image[(wid*width) + j].red = 0;
-			image[(wid*width) + j].green = 0;
-			image[(wid*width) + j].blue = 0;
+			image[(wid*length) + j].red = 0;
+			image[(wid*length) + j].green = 0;
+			image[(wid*length) + j].blue = 0;
 		}
 	}
 	for (int i = 0; i<sizeOfBoard; i++) {//create col
-		int len = i*(width / sizeOfBoard);
-		for (int j = 0; j<height; j++) {
+		int len = i*(length / sizeOfBoard);
+		for (int j = 0; j<length; j++) {
 			/*
 			*giving only the blue one 255 and others
 			* give them zero makes our TicTacToe board col a blue col
 			*/
-			image[(width*j) + len].red = 0;
-			image[(width*j) + len].green = 0;
-			image[(width*j) + len].blue = 0;
+			image[(length*j) + len].red = 0;
+			image[(length*j) + len].green = 0;
+			image[(length*j) + len].blue = 0;
 		}
 	}
 	for (int i = 0; i<sizeOfBoard; ++i) {//O and X signs
 		for (int j = 0; j<sizeOfBoard; j++) {
-			int hei, to_hei, wid, to_wid;
-			hei = j*(width / sizeOfBoard);
-			to_hei = (j + 1)*(width / sizeOfBoard);
-			wid = i*(width / sizeOfBoard);
-			to_wid = (i + 1)*(width / sizeOfBoard);
+			int len, to_len, wid, to_wid;
+			len = j*(length / sizeOfBoard);
+			to_len = (j + 1)*(length / sizeOfBoard);
+			wid = i*(length / sizeOfBoard);
+			to_wid = (i + 1)*(length / sizeOfBoard);
 
 			if (board[{i, j}] == 'O') {//draw O
-				int len_dist = (to_hei - hei) / 2;
+				int len_dist = (to_len - len) / 2;
 				int wid_dist = (to_wid - wid) / 2;
 				int rad = len_dist;
 				for (int i = 0; i<to_wid - wid; i++) {
@@ -179,12 +179,12 @@ string Board::draw(int pixels) {
 					*                        --
 					*two sides at the same time (left and right) :-)
 					*/
-					image[width*(wid + j) + hei + i].green = 255;
-					image[width*(wid + j) + hei + i].blue = 0;
-					image[width*(wid + j) + hei + i].red = 0;
-					image[width*(to_wid - j) + hei + i].green = 255;
-					image[width*(to_wid - j) + hei + i].blue = 0;
-					image[width*(to_wid - j) + hei + i].red = 0;
+					image[length*(wid + j) + len + i].green = 255;
+					image[length*(wid + j) + len + i].blue = 0;
+					image[length*(wid + j) + len + i].red = 0;
+					image[length*(to_wid - j) + len + i].green = 255;
+					image[length*(to_wid - j) + len + i].blue = 0;
+					image[length*(to_wid - j) + len + i].red = 0;
 				}
 			}
 			/*
@@ -195,12 +195,12 @@ string Board::draw(int pixels) {
 			*/
 			else if (board[{i, j}] == 'X') { // draw X
 				for (int t = 0; t<to_wid - wid; t++) {
-					image[width*(t + wid) + hei + t].green = 0;
-					image[width*(t + wid) + hei + t].red = 0;
-					image[width*(t + wid) + hei + t].blue = 255;
-					image[width*(t + wid) + to_hei - t].blue = 255;
-					image[width*(t + wid) + to_hei - t].green = 0;
-					image[width*(t + wid) + to_hei - t].red = 0;
+					image[length*(t + wid) + len + t].green = 0;
+					image[length*(t + wid) + len + t].red = 0;
+					image[length*(t + wid) + len + t].blue = 255;
+					image[length*(t + wid) + to_len - t].blue = 255;
+					image[length*(t + wid) + to_len - t].green = 0;
+					image[length*(t + wid) + to_len - t].red = 0;
 				}
 			}
 		}
@@ -213,7 +213,7 @@ string Board::draw(int pixels) {
 	/*
 	*image processing
 	*/
-	output.write(reinterpret_cast <char*>(image), 3 * pixels*pixels);
+	output.write(reinterpret_cast <char*>(image), 3 * num*num);
 	output.close();
 	/*For some weird*/
 	if (sizeOfBoard == 3) {
