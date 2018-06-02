@@ -1,5 +1,8 @@
 #include "Board.h"
+#include <stdio.h>
+#include <iostream>
 
+using namespace std;
 
 Board::Board() {
 	this->sizeOfBoard = 4;
