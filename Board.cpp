@@ -106,7 +106,7 @@ string Board::draw(int pixels) {
 	string fileName = "TicTacToe.ppm";
 	int fileIndx = 0;
 	while (exists(fileName)) {
-		fileName = "TicTacToe_" + to_string(sizeOfBoard) +"_"+ to_string(fileIndx) +".ppm";
+		fileName = "TicTacToe_" + to_string(sizeOfBoard) + "_" + to_string(fileIndx) + ".ppm";
 		fileIndx++;
 	}// this way we can make all type of different image names
 	ofstream output(fileName, ios::app | ios::binary);
@@ -142,14 +142,14 @@ string Board::draw(int pixels) {
 				int len_dist = (to_hei - hei) / 2;
 				int wid_dist = (to_wid - wid) / 2;
 				int rad = len_dist;
-				for (int i = 0; i<=to_wid - wid; i++) {
+				for (int i = 0; i < to_wid - wid; i++) {
 					int j = sqrt((rad*rad) - (i - len_dist)*(i - len_dist)) + wid_dist;
-					image[width*(wid + i) + hei + j].green = 255;
-					image[width*(wid + i) + hei + j].blue = 0;
-					image[width*(wid + i) + hei + j].red = 0;
-					image[width*(to_wid - i) + to_hei - j].green = 255;
-					image[width*(to_wid - i) + to_hei - j].blue = 0;
-					image[width*(to_wid - i) + to_hei - j].red = 0;
+					image[width*(wid + j) + hei + i].green = 255;
+					image[width*(wid + j) + hei + i].blue = 0;
+					image[width*(wid + j) + hei + i].red = 0;
+					image[width*(to_wid - j) + to_hei - i].green = 255;
+					image[width*(to_wid - j) + to_hei - i].blue = 0;
+					image[width*(to_wid - j) + to_hei - i].red = 0;
 				}
 			}
 			else if (board[{raw, column}] == 'X') { // Draws an X in the current square
