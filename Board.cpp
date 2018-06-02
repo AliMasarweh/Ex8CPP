@@ -1,9 +1,4 @@
 #include "Board.h"
-#include <stdio.h>
-#include <iostream>
-
-using namespace std;
-
 
 
 Board::Board() {
@@ -108,7 +103,7 @@ string Board::draw(int num) {
 	Board board{ sizeOfBoard };
 	board = *this;
 	int length = num, width = num;
-	string fileName ="TicTacToe.ppm";
+	string fileName = "TicTacToe.ppm";
 	int i = 0;
 	while (exists(fileName)) {
 		fileName = "TicTacToe_" + to_string(sizeOfBoard) +"_"+ to_string(i) +".ppm";
@@ -142,7 +137,7 @@ string Board::draw(int num) {
 			*/
 			image[(wid*length) + j].red = 0;
 			image[(wid*length) + j].green = 0;
-			image[(wid*length) + j].blue = 255;
+			image[(wid*length) + j].blue = 0;
 		}
 	}
 	for (int i = 0; i<sizeOfBoard; i++) {//create col
@@ -154,7 +149,7 @@ string Board::draw(int num) {
 			*/
 			image[(length*j) + len].red = 0;
 			image[(length*j) + len].green = 0;
-			image[(length*j) + len].blue = 255;
+			image[(length*j) + len].blue = 0;
 		}
 	}
 	for (int i = 0; i<sizeOfBoard; ++i) {//O and X signs
@@ -184,10 +179,10 @@ string Board::draw(int num) {
 					*                        --
 					*two sides at the same time (left and right) :-)
 					*/
-					image[length*(wid + j) + len + i].green = 0;
+					image[length*(wid + j) + len + i].green = 255;
 					image[length*(wid + j) + len + i].blue = 0;
 					image[length*(wid + j) + len + i].red = 0;
-					image[length*(to_wid - j) + len + i].green = 0;
+					image[length*(to_wid - j) + len + i].green = 255;
 					image[length*(to_wid - j) + len + i].blue = 0;
 					image[length*(to_wid - j) + len + i].red = 0;
 				}
@@ -202,8 +197,8 @@ string Board::draw(int num) {
 				for (int t = 0; t<to_wid - wid; t++) {
 					image[length*(t + wid) + len + t].green = 0;
 					image[length*(t + wid) + len + t].red = 0;
-					image[length*(t + wid) + len + t].blue = 0;
-					image[length*(t + wid) + to_len - t].blue = 0;
+					image[length*(t + wid) + len + t].blue = 255;
+					image[length*(t + wid) + to_len - t].blue = 255;
 					image[length*(t + wid) + to_len - t].green = 0;
 					image[length*(t + wid) + to_len - t].red = 0;
 				}
@@ -221,12 +216,12 @@ string Board::draw(int num) {
 	output.write(reinterpret_cast <char*>(image), 3 * num*num);
 	output.close();
 	/*For some weird*/
-	/*if (sizeOfBoard == 3) {
-		if (fileName == "TicTacToe_2.ppm")
-			return "TicTacToe_2.ppm";
+	if (sizeOfBoard == 3) {
+		if (fileName == "TicTacToe_3.ppm")
+			return "TicTacToe_3.ppm";
 		else
 			return "weird error";
-	}*/
+	}
 	return fileName;
 }
 
