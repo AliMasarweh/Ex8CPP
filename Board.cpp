@@ -103,6 +103,10 @@ string Board::draw(int num) {
 	Board board{ sizeOfBoard };
 	board = *this;
 	//string fileName ="TicTacToe.ppm";
+	int length = num, width = num;
+	string fileName = "TicTacToe_" + to_string(sizeOfBoard) + ".ppm";// this way we can make all type of dif board with dif image names
+	ofstream output(fileName, ios::app | ios::binary);
+	output << "P6" << endl << length << " " << width << endl << 255 << endl;
 	if ((num == 1) || (num == 2) || (num == 3) || (num == 4) || (num == 5) || (num == 6)
 		|| (num == 7) || (num == 8) || (num == 9) || (num == 10) || (num == 11) || (num == 12)
 		|| (num == 13) || (num == 14) || (num == 15) || (num == 16) || (num == 17) || (num == 18)
