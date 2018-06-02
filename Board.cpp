@@ -132,34 +132,34 @@ string Board::draw(int pixels) {
 
 	for (int raw = 0; raw<sizeOfBoard; raw++) {//O and X signs
 		for (int column = 0; column<sizeOfBoard; column++) {
-			int leftOfSquare, rightOfSquare, topOfSquare, bottomOfSquare;
-			leftOfSquare = column*(width / sizeOfBoard);
-			rightOfSquare = (column + 1)*(width / sizeOfBoard);
-			topOfSquare = raw*(width / sizeOfBoard);
-			bottomOfSquare = (raw + 1)*(width / sizeOfBoard);
+			int hei, to_hei, wid, to_wid;
+			hei = column*(width / sizeOfBoard);
+			to_hei = (column + 1)*(width / sizeOfBoard);
+			wid = raw*(width / sizeOfBoard);
+			to_wid = (raw + 1)*(width / sizeOfBoard);
 
 			if (board[{raw, column}] == 'O') {// Draws an O in the current square
-				int len_dist = (rightOfSquare - leftOfSquare) / 2;
-				int wid_dist = (bottomOfSquare - topOfSquare) / 2;
+				int len_dist = (to_hei - hei) / 2;
+				int wid_dist = (to_wid - wid) / 2;
 				int rad = len_dist;
-				for (int i = 0; i<= bottomOfSquare - topOfSquare; i++) {
+				for (int i = 0; i<=to_wid - wid; i++) {
 					int j = sqrt((rad*rad) - (i - len_dist)*(i - len_dist)) + wid_dist;
-					image[width*(leftOfSquare + i) + topOfSquare + j].green = 255;
-					image[width*(leftOfSquare + i) + topOfSquare + j].blue = 0;
-					image[width*(leftOfSquare + i) + topOfSquare + j].red = 0;
-					image[width*(bottomOfSquare - i) + rightOfSquare - j].green = 255;
-					image[width*(bottomOfSquare - i) + rightOfSquare - j].blue = 0;
-					image[width*(bottomOfSquare - i) + rightOfSquare - j].red = 0;
+					image[width*(wid + i) + hei + j].green = 255;
+					image[width*(wid + i) + hei + j].blue = 0;
+					image[width*(wid + i) + hei + j].red = 0;
+					image[width*(to_wid - i) + to_hei - j].green = 255;
+					image[width*(to_wid - i) + to_hei - j].blue = 0;
+					image[width*(to_wid - i) + to_hei - j].red = 0;
 				}
 			}
 			else if (board[{raw, column}] == 'X') { // Draws an X in the current square
-				for (int t = 0; t<rightOfSquare - leftOfSquare; t++) {
-					image[width*(t + leftOfSquare) + topOfSquare + t].green = 0;
-					image[width*(t + leftOfSquare) + topOfSquare + t].red = 0;
-					image[width*(t + leftOfSquare) + topOfSquare + t].blue = 255;
-					image[width*(t + leftOfSquare) + rightOfSquare - t].blue = 255;
-					image[width*(t + leftOfSquare) + rightOfSquare - t].green = 0;
-					image[width*(t + leftOfSquare) + rightOfSquare - t].red = 0;
+				for (int t = 0; t<to_wid - wid; t++) {
+					image[width*(t + wid) + hei + t].green = 0;
+					image[width*(t + wid) + hei + t].red = 0;
+					image[width*(t + wid) + hei + t].blue = 255;
+					image[width*(t + wid) + to_hei - t].blue = 255;
+					image[width*(t + wid) + to_hei - t].green = 0;
+					image[width*(t + wid) + to_hei - t].red = 0;
 				}
 			}
 		}
