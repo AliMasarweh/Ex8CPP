@@ -144,25 +144,12 @@ string Board::draw(int pixels) {
 				int rad = len_dist;
 				for (int i = 0; i<to_wid - wid; i++) {
 					int j = sqrt((rad*rad) - (i - len_dist)*(i - len_dist)) + wid_dist;
-					/*
-					*sign O will be black cuz all green red and blue = 0
-					*/
-
-					/* the idea here is to draw the two sides of sing O at the same time
-					*  something like this :
-					*                        --
-					*                     --    --
-					*                   --        --
-					*                     --    --
-					*                        --
-					*two sides at the same time (left and right) :-)
-					*/
 					image[width*(wid + j) + hei + i].green = 255;
 					image[width*(wid + j) + hei + i].blue = 0;
 					image[width*(wid + j) + hei + i].red = 0;
-					image[width*(to_wid - j) + hei + i].green = 255;
-					image[width*(to_wid - j) + hei + i].blue = 0;
-					image[width*(to_wid - j) + hei + i].red = 0;
+					image[width*(to_wid - j) + to_hei - i].green = 255;
+					image[width*(to_wid - j) + to_hei - i].blue = 0;
+					image[width*(to_wid - j) + to_hei - i].red = 0;
 				}
 			}
 			/*
