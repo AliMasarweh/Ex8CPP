@@ -113,45 +113,23 @@ string Board::draw(int pixels) {
 	output << "P6" << endl << width << " " << height << endl << 255 << endl;
 
 	RedGreenBlue *image = new RedGreenBlue[width*height];
+	int blackSeparator = (width / sizeOfBoard);
 
 	for (int i = 0; i<width; i++) {  // row
 		for (int j = 0; j<height; j++) { // column
-										 /*
-										 *giving all three the number 255 gives us a white board pic
-										 */
-			image[(width*i) + j].red = 255;
-			image[(width*i) + j].green = 255;
-			image[(width*i) + j].blue = 255;
+			if (i % blackSeparator == 0 || j % blackSeparator == 0 || ((width*i) + j) >= blackSeparator*sizeOfBoard) {
+				image[(width*i) + j].red = 0;
+				image[(width*i) + j].green = 0;
+				image[(width*i) + j].blue = 0;
+			}
+			else {
+				image[(width*i) + j].red = 255;
+				image[(width*i) + j].green = 255;
+				image[(width*i) + j].blue = 255;
+			}
 		}
 	}
 
-	/*
-	* creat lines
-	*/
-	for (int i = 0; i<sizeOfBoard; i++) {//create rows
-		int wid = i*(width / sizeOfBoard);
-		for (int j = 0; j<height; j++) {
-			/*
-			*giving only the blue one 255 and others
-			* give them zero makes our TicTacToe board rows a blue rows
-			*/
-			image[(wid*width) + j].red = 0;
-			image[(wid*width) + j].green = 0;
-			image[(wid*width) + j].blue = 0;
-		}
-	}
-	for (int i = 0; i<sizeOfBoard; i++) {//create col
-		int len = i*(width / sizeOfBoard);
-		for (int j = 0; j<height; j++) {
-			/*
-			*giving only the blue one 255 and others
-			* give them zero makes our TicTacToe board col a blue col
-			*/
-			image[(width*j) + len].red = 0;
-			image[(width*j) + len].green = 0;
-			image[(width*j) + len].blue = 0;
-		}
-	}
 	for (int i = 0; i<sizeOfBoard; ++i) {//O and X signs
 		for (int j = 0; j<sizeOfBoard; j++) {
 			int hei, to_hei, wid, to_wid;
