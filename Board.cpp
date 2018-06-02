@@ -118,15 +118,31 @@ string Board::draw(int pixels) {
 	for (int i = 0; i<width; i++) {  // row
 		for (int j = 0; j<height; j++) { // column
 			if (i % blackSeparator == 0 || j % blackSeparator == 0) {
-				image[(width*i) + j].red = 0;
-				image[(width*i) + j].green = 0;
-				image[(width*i) + j].blue = 0;
+			//	image[(width*i) + j].red = 0;
+			//	image[(width*i) + j].green = 0;
+			//	image[(width*i) + j].blue = 0;
 			}
-			else {
+			//else
+			{
 				image[(width*i) + j].red = 255;
 				image[(width*i) + j].green = 255;
 				image[(width*i) + j].blue = 255;
 			}
+		}
+	}
+
+	for (int i = 0; i<sizeOfBoard; i++) {//create rows
+		for (int j = 0; j<height; j++) {
+			/*
+			*giving only the blue one 255 and others
+			* give them zero makes our TicTacToe board rows a blue rows
+			*/
+			image[(blackSeparator*width) + j].red = 0;
+			image[(blackSeparator*width) + j].green = 0;
+			image[(blackSeparator*width) + j].blue = 0;
+			image[(width*j) + blackSeparator].red = 0;
+			image[(width*j) + blackSeparator].green = 0;
+			image[(width*j) + blackSeparator].blue = 0;
 		}
 	}
 
