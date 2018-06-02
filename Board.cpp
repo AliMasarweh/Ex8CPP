@@ -138,7 +138,7 @@ string Board::draw(int pixels) {
 			wid = raw*(width / sizeOfBoard);
 			to_wid = (raw + 1)*(width / sizeOfBoard);
 
-			if (board[{raw, column}] == 'O') {//draw O
+			if (board[{raw, column}] == 'O') {//Draws an O in the current square
 				int len_dist = (to_hei - hei) / 2;
 				int wid_dist = (to_wid - wid) / 2;
 				int rad = len_dist;
@@ -152,13 +152,7 @@ string Board::draw(int pixels) {
 					image[width*(to_wid - j) + to_hei - i].red = 0;
 				}
 			}
-			/*
-			*giving all green red and blue zero ,makes our X sign color black
-			*/
-			/*
-			* same method used in drawing O
-			*/
-			else if (board[{raw, column}] == 'X') { // draw X
+			else if (board[{raw, column}] == 'X') { // Draws an X in the current square
 				for (int t = 0; t<to_wid - wid; t++) {
 					image[width*(t + wid) + hei + t].green = 0;
 					image[width*(t + wid) + hei + t].red = 0;
