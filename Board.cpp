@@ -111,7 +111,7 @@ string Board::draw(int num) {
 	string fileName ="TicTacToe.ppm";
 	int i = 0;
 	while (exists(fileName)) {
-		fileName = "TicTacToe_" + to_string(sizeOfBoard+i) + ".ppm";
+		fileName = "TicTacToe_" + to_string(sizeOfBoard) +"_"+ to_string(i) +".ppm";
 		i++;
 	}// this way we can make all type of different image names
 	ofstream output(fileName, ios::app | ios::binary);
