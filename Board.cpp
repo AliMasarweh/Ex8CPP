@@ -184,6 +184,7 @@ string Board::draw(int pixels) {
 	*/
 	output.write(reinterpret_cast <char*>(image), 3 * pixels*pixels);
 	output.close();
+	delete[] image;
 	return fileName;
 }
 
