@@ -104,10 +104,10 @@ string Board::draw(int pixels) {
 	board = *this;
 	int width = pixels, height = pixels;
 	string fileName = "TicTacToe.ppm";
-	int i = 0;
+	int fileIndx = 0;
 	while (exists(fileName)) {
-		fileName = "TicTacToe_" + to_string(sizeOfBoard) +"_"+ to_string(i) +".ppm";
-		i++;
+		fileName = "TicTacToe_" + to_string(sizeOfBoard) +"_"+ to_string(fileIndx) +".ppm";
+		fileIndx++;
 	}// this way we can make all type of different image names
 	ofstream output(fileName, ios::app | ios::binary);
 	output << "P6" << endl << width << " " << height << endl << 255 << endl;
@@ -130,15 +130,15 @@ string Board::draw(int pixels) {
 		}
 	}
 
-	for (int i = 0; i<sizeOfBoard; ++i) {//O and X signs
-		for (int j = 0; j<sizeOfBoard; j++) {
+	for (int raw = 0; raw<sizeOfBoard; raw++) {//O and X signs
+		for (int column = 0; column<sizeOfBoard; column++) {
 			int hei, to_hei, wid, to_wid;
-			hei = j*(width / sizeOfBoard);
-			to_hei = (j + 1)*(width / sizeOfBoard);
-			wid = i*(width / sizeOfBoard);
-			to_wid = (i + 1)*(width / sizeOfBoard);
+			hei = column*(width / sizeOfBoard);
+			to_hei = (column + 1)*(width / sizeOfBoard);
+			wid = raw*(width / sizeOfBoard);
+			to_wid = (raw + 1)*(width / sizeOfBoard);
 
-			if (board[{i, j}] == 'O') {//draw O
+			if (board[{raw, column}] == 'O') {//draw O
 				int len_dist = (to_hei - hei) / 2;
 				int wid_dist = (to_wid - wid) / 2;
 				int rad = len_dist;
@@ -158,7 +158,7 @@ string Board::draw(int pixels) {
 			/*
 			* same method used in drawing O
 			*/
-			else if (board[{i, j}] == 'X') { // draw X
+			else if (board[{raw, column}] == 'X') { // draw X
 				for (int t = 0; t<to_wid - wid; t++) {
 					image[width*(t + wid) + hei + t].green = 0;
 					image[width*(t + wid) + hei + t].red = 0;
