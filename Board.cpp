@@ -216,12 +216,6 @@ string Board::draw(int num) {
 	output.write(reinterpret_cast <char*>(image), 3 * num*num);
 	output.close();
 	/*For some weird*/
-	if (sizeOfBoard == 3) {
-		if (fileName == "TicTacToe_3.ppm")
-			return "TicTacToe_3.ppm";
-		else
-			return "weird error";
-	}
 	return fileName;
 }
 
