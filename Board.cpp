@@ -221,12 +221,12 @@ string Board::draw(int num) {
 	output.write(reinterpret_cast <char*>(image), 3 * num*num);
 	output.close();
 	/*For some weird*/
-	if (sizeOfBoard == 3) {
+	/*if (sizeOfBoard == 3) {
 		if (fileName == "TicTacToe_2.ppm")
 			return "TicTacToe_2.ppm";
 		else
 			return "weird error";
-	}
+	}*/
 	return fileName;
 }
 
