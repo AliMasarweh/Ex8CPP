@@ -142,7 +142,7 @@ string Board::draw(int pixels) {
 				int len_dist = (to_hei - hei) / 2;
 				int wid_dist = (to_wid - wid) / 2;
 				int rad = len_dist;
-				for (int i = 0; i<to_wid - wid; i++) {
+				for (int i = 0; i<=to_wid - wid; i++) {
 					int j = sqrt((rad*rad) - (i - len_dist)*(i - len_dist)) + wid_dist;
 					image[width*(wid + i) + hei + j].green = 255;
 					image[width*(wid + i) + hei + j].blue = 0;
