@@ -113,7 +113,7 @@ string Board::draw(int num) {
 	ofstream output(fileName, ios::app | ios::binary);
 	output << "P6" << endl << length << " " << width << endl << 255 << endl;
 
-	RedGreenBlue image[length*length];
+	RedGreenBlue *image = new RedGreenBlue[length*length];
 
 	for (int j = 0; j<length; j++) {  // row
 		for (int i = 0; i<length; i++) { // column
@@ -206,12 +206,17 @@ string Board::draw(int num) {
 			}
 		}
 	}
+
+	
+	
+
+
 	/*
 	*image processing
 	*/
-	output.write(reinterpret_cast <char*>(&image), 3 * num*num);
+	output.write(reinterpret_cast <char*>(image), 3 * num*num);
 	output.close();
-	
+	/*For some weird*/
 	if (sizeOfBoard == 3) {
 		if (fileName == "TicTacToe_3.ppm")
 			return "TicTacToe_3.ppm";
