@@ -117,7 +117,7 @@ string Board::draw(int pixels) {
 
 	for (int i = 0; i<width; i++) {  // row
 		for (int j = 0; j<height; j++) { // column
-			if (i % blackSeparator == 0 || j % blackSeparator == 0 || ((width*i) + j) >= blackSeparator*sizeOfBoard) {
+			if (i % blackSeparator == 0 || j % blackSeparator == 0) {
 				image[(width*i) + j].red = 0;
 				image[(width*i) + j].green = 0;
 				image[(width*i) + j].blue = 0;
