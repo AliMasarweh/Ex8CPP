@@ -209,9 +209,6 @@ string Board::draw(int num) {
 	/*
 	*image processing
 	*/
-	if (sizeOfBoard == 3) {
-		return "TicTacToe_3.ppm";
-	}
 	output.write(reinterpret_cast <char*>(&image), 3 * num*num);
 	output.close();
 	
