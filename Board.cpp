@@ -210,7 +210,6 @@ string Board::draw(int pixels) {
 	*/
 	output.write(reinterpret_cast <char*>(image), 3 * pixels*pixels);
 	output.close();
-	/*For some weird*/
 	return fileName;
 }
 
