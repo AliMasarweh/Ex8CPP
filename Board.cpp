@@ -98,7 +98,7 @@ int Board::BoardSize() const {
 	return this->sizeOfBoard;
 }
 
-
+/*This method draws a portable pixmap (ppm) image of the current board (including the assinged X & O)*/
 string Board::draw(int pixels) {
 	Board board{ sizeOfBoard };
 	board = *this;
@@ -108,7 +108,7 @@ string Board::draw(int pixels) {
 	while (exists(fileName)) {
 		fileName = "TicTacToe_" + to_string(sizeOfBoard) + "_" + to_string(fileIndx) + ".ppm";
 		fileIndx++;
-	}// this way we can make all type of different image names
+	}//Checking if a file exists with the same name ,if so, we give it a new name
 	ofstream output(fileName, ios::app | ios::binary);
 	output << "P6" << endl << width << " " << height << endl << 255 << endl;
 
@@ -130,7 +130,7 @@ string Board::draw(int pixels) {
 		}
 	}
 
-	for (int i = 0; i<sizeOfBoard; i++) {//create rows
+	for (int i = 0; i<sizeOfBoard; i++) {//Diving the board by it's size
 		for (int j = 0; j<height; j++) {
 			image[(i*blackSeparator*width) + j].red = 0;
 			image[(i*blackSeparator*width) + j].green = 0;
@@ -179,6 +179,9 @@ string Board::draw(int pixels) {
 	*image processing
 	*/
 	output.write(reinterpret_cast <char*>(image), 3 * pixels*pixels);
+	/*
+	 * Sapce emptying
+	 */
 	output.close();
 	delete[] image;
 	return fileName;
