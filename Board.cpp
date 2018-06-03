@@ -150,11 +150,11 @@ string Board::draw(int pixels) {
 			to_wid = (raw + 1)*(width / sizeOfBoard);
 
 			if (board[{raw, column}] == 'O') {// Draws an O in the current square
-				int len_dist = (to_hei - hei) / 2;
 				int wid_dist = (to_wid - wid) / 2;
-				int rad = len_dist;
+				int hei_dist = (to_hei - hei) / 2;
+				int rad = wid_dist;
 				for (int i = 0; i < to_wid - wid; i++) {
-					int j = sqrt((rad*rad) - (i - len_dist)*(i - len_dist)) + wid_dist;
+					int j = sqrt((rad*rad) - (i - wid_dist)*(i - wid_dist)) + hei_dist;
 					image[width*(wid + j) + hei + i].green = 255;
 					image[width*(wid + j) + hei + i].blue = 0;
 					image[width*(wid + j) + hei + i].red = 0;
