@@ -132,10 +132,6 @@ string Board::draw(int pixels) {
 
 	for (int i = 0; i<sizeOfBoard; i++) {//create rows
 		for (int j = 0; j<height; j++) {
-			/*
-			*giving only the blue one 255 and others
-			* give them zero makes our TicTacToe board rows a blue rows
-			*/
 			image[(i*blackSeparator*width) + j].red = 0;
 			image[(i*blackSeparator*width) + j].green = 0;
 			image[(i*blackSeparator*width) + j].blue = 0;
